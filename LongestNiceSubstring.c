@@ -36,3 +36,48 @@ char* longestNiceSubstring(char* s) {
         return res;
     }
 }
+
+//Divide and Conqueor
+char* longestNiceSubstring(char* s) {
+    int len = strlen(s);
+    if (len < 2) {
+        return strdup("");
+    }
+    char* res = strdup(s);
+    for (int i = 0; i < len; i++) {
+        char c = s[i];
+        if (islower(c)) {
+            char* upper = strchr(s, toupper(c));
+            if (upper == NULL) {
+                char* left = longestNiceSubstring(strndup(s, i));
+                char* right = longestNiceSubstring(strdup(s+i+1));
+                if (strlen(left) >= strlen(right)) {
+                    free(right);
+                    res = left;
+                } 
+                else {
+                    free(left);
+                    res = right;
+                }
+                break;
+          }
+       }
+        else {
+            char* lower = strchr(s, tolower(c));
+            if (lower == NULL) {
+                char* left = longestNiceSubstring(strndup(s, i));
+                char* right = longestNiceSubstring(strdup(s+i+1));
+                if (strlen(left) >= strlen(right)) {
+                    free(right);
+                    res = left;
+                }
+                else {
+                    free(left);
+                    res = right;
+                }
+            break;
+        }
+    }
+}
+return res;
+}
