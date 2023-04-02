@@ -1,4 +1,5 @@
-//DIVIDE AND CONQUEOR
+//bRUTE fORCE
+
 char* longestNiceSubstring(char* s) {
     int len = strlen(s);
     if (len < 2) {
