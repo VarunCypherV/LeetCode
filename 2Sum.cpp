@@ -1,3 +1,4 @@
+//HASHMAP INDEX AND ELEEMENT
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
