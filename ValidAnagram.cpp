@@ -1,26 +1,24 @@
-//HASHMAP , RUN TIME 16MS
+//removed unncessary conversions runtime 7ms
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        unordered_map<string , int> hashmap1;
-        for(char ch : s ){
-            string ch21(1, ch);
-            hashmap1[ch21]++;
+        if (s.length() != t.length()) {
+            return false;
         }
-        for(char ch2:t){
-            string ch22(1, ch2);
-            if(hashmap1[ch22]){
-                hashmap1[ch22]--;
-            }     
-            else{
+        unordered_map<char, int> hashmap1;
+        for (char ch : s) {
+            hashmap1[ch]++;
+        }
+        for (char ch : t) {
+            if (hashmap1[ch] == 0) {
                 return false;
             }
+            hashmap1[ch]--;
         }
-        for(char ch3 : s ){
-            string ch23(1, ch3);
-            if(hashmap1[ch23]!=0){
+        for (auto x : hashmap1) {
+            if (x.second != 0) {
                 return false;
-        } 
+            }
         }
         return true;
     }
