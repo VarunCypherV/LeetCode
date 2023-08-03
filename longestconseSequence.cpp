@@ -8,10 +8,6 @@ public:
         int count=0;
         int max=-1000000000;
         int flag=0;
-        for(auto x:nums){
-            cout<<x<<" ";
-        }
-        cout<<endl;
         for(int i=1;i<nums.size();i++){
             if(nums[i]==nums[i-1]+1){
                 count++;            
@@ -24,7 +20,6 @@ public:
                     max=count+1;
                 } 
                 count=0;
-                
             }
         }
         if(!nums.size()>0){
