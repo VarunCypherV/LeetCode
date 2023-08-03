@@ -17,6 +17,7 @@ public:
         }
         return true;
     }
+
     bool isValidSubgrid(vector<vector<char>>& board, int startRow, int startCol) {
         unordered_map<char, int> hmap;
         for (char ch = '1'; ch <= '9'; ch++) {
@@ -42,13 +43,15 @@ public:
                 return false;
             }
         }
-        for (int i = 0; i < 9; i += 3) {
-            for (int j = 0; j < 9; j += 3) {
-                if (!isValidSubgrid(board, i, j)) {
-                    return false;
-                }
+
+        for (int box = 0; box < 9; box++) {
+            int startRow = (box / 3) * 3; //round down : 0,3,6
+            int startCol = (box % 3) * 3; //round 0,3,6
+            if (!isValidSubgrid(board, startRow, startCol)) {
+                return false;
             }
         }
+
         return true;
     }
 };
