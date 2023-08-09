@@ -1,5 +1,45 @@
 // Min Stack
+//stack stl
+class MinStack {
+private:
+    stack<int> array;
+    stack<int> minStack;
 
+public:
+    MinStack() {
+
+    }
+
+    void push(int val) {
+        array.push(val);
+        if (minStack.empty() || val <= minStack.top()) {
+            minStack.push(val);
+        }
+    }
+
+    void pop() {
+        if (!array.empty()) {
+            if (array.top() == minStack.top()) {
+                minStack.pop();
+            }
+            array.pop();
+        }
+    }
+
+    int top() {
+        if (!array.empty()) {
+            return array.top();
+        }
+        return -1;
+    }
+
+    int getMin() {
+        if (!minStack.empty()) {
+            return minStack.top();
+        }
+        return -1;
+    }
+};
 //better optimization using min stack and array stack
 class MinStack {
 
