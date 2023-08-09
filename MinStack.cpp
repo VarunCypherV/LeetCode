@@ -1,5 +1,56 @@
 // Min Stack
 
+//better optimization using min stack and array stack
+class MinStack {
+
+private:     
+    int* array;
+    int tops;
+    int* min;
+    int mintop;
+public:
+    MinStack() {
+        tops=-1;
+        mintop=-1;
+        array = new int[10000];
+        min= new int[10000];
+    }
+    
+    void push(int val) {
+        if( (mintop!=-1 && tops!=-1)&& (val<=*(min+mintop)) ) {
+            mintop++;
+            *(min+mintop)=val;
+        }
+        else if (mintop==-1){
+            mintop++;
+            *(min+mintop)=val;
+        }
+        tops++;
+        *(array+tops)=val;
+
+    }
+    
+    void pop() {
+        cout << *(array+tops) <<" " << *(min+mintop)<<endl;
+        if(( *(array+tops) == *(min+mintop)) && (mintop!=-1)){
+            cout<< "accessed for array top" <<*(array+tops)<<endl;
+            mintop--;
+        }
+         tops--;
+    }
+    
+    int top() {
+        return *(array+tops);
+    }
+    
+    int getMin() {
+        if(mintop!=-1){
+            return *(min+mintop);
+        }
+        return 0;
+
+    }
+};
 //Using array pointer
 class MinStack {
 
