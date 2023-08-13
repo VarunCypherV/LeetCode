@@ -13,7 +13,7 @@ public:
         else if(nums[m]>target){
             return BinarySearch(nums,target,l,m-1);
         }
-        else if(nums[m]<target){
+        else{
             return BinarySearch(nums,target,m+1,r);
         }
         return -1; //if not found
