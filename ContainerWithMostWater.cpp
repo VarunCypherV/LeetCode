@@ -1,3 +1,4 @@
+
 class Solution {
 public:
     int min(int a,int b){
@@ -15,15 +16,13 @@ public:
         while (left < right) {
             int width = right - left;
             int minHeight = min(height[left], height[right]);
-            long long area = (long long)width * minHeight;
+            long area = (long)width * minHeight;
 
             maxArea = max(maxArea, area);
-
-          //min ht has to inc for area to inc so we inc that side
+             //min ht has to inc for area to inc so we inc that side
             (height[left] < height[right]) ? left++ : right-- ;
         }
         return maxArea;
     }
 };
 
-//
