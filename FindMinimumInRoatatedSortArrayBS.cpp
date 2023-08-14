@@ -18,7 +18,7 @@ public:
 };
 
 
-//NOTE BELOW IS A BS SOLN WITHOUT RECURSION
+//NOTE BELOW IS A BS SOLN WITHOUT RECURSION :best soln
 class Solution {
 public:
     int findMin(vector<int>& nums) {
