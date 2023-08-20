@@ -1,3 +1,30 @@
+//Way way impressive concept
+class TimeMap {
+private:
+    unordered_map<string, map<int, string>> storage;
+
+public:
+    TimeMap() {
+        
+    }
+
+    void set(string key, string value, int timestamp) {
+        storage[key][timestamp] = value;
+    }
+    
+    string get(string key, int timestamp) {
+        auto it = storage[key].upper_bound(timestamp);
+        if (it != storage[key].begin()) {
+            --it;
+            return it->second;
+        }
+        return "";
+    }
+    // it first points to 1st element greater than timestamp
+    // then if not the first element moves one step back and returns which means it is returning
+    // last element / greatest element equal to timestamp WOW
+};
+
 //concept correct
 class TimeMap {
 private:
