@@ -8,7 +8,7 @@ public:
 
         int counter = t.size(), left = 0, right = 0, min = INT_MAX, head = 0;
         while (right < s.size()){
-            if (map[s[right++]]-- > 0) {
+            if (map[s[right++]]-- > 0) {   //if next right has a val > 0 ie it is there in t , req char counter --
                 counter--;
             }
             while (counter == 0) {
