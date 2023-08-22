@@ -1,6 +1,33 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
+        vector<int> map(128,0);
+        for (char c : t) {
+            map[c]++;
+        }
+
+        int counter = t.size(), left = 0, right = 0, min = INT_MAX, head = 0;
+        while (right < s.size()){
+            if (map[s[right++]]-- > 0) {
+                counter--;
+            }
+            while (counter == 0) {
+                if (right - left < min) {
+                    head = left;
+                    min = right - head;
+                }
+                if (map[s[left++]]++ == 0) { //if next left was -1 , then inc to minimize window
+                    counter++;
+                }
+            }  
+        }
+        return min == INT_MAX ? "" : s.substr(head, min);
+    }
+};
+
+class Solution {
+public:
+    string minWindow(string s, string t) {
         unordered_map<char, int> tFreq, windowFreq;
         int left = 0, right = 0;
         int minLen = INT_MAX;
