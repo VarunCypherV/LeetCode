@@ -18,12 +18,16 @@ public:
             current = list2;
             list2 = list2->next;
         }
+        //choosing head so its the minimum we can choose there it self
+        //now for reminder
         while (list1 != nullptr && list2 != nullptr) {
             if (list1->val < list2->val) {
                 current->next = list1;
                 current = current->next;
                 list1 = list1->next;
+                //add list1 element to the result ll current and go on
             } else {
+                //else add list2 element
                 current->next = list2;
                 current = current->next;
                 list2 = list2->next;
