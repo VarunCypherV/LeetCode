@@ -19,7 +19,7 @@ public:
             prev = head;  
             head = next;  
         }
-        head = temp; // pointing to last node
+        head = prev; // pointing to last node
         return head;
     }
 };
