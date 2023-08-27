@@ -1,0 +1,32 @@
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* curr = head;
+        int count = 0;
+        
+        // Count the number of nodes in the current group
+        while (curr != nullptr && count < k) {
+            curr = curr->next;
+            count++;
+        }
+        
+        if (count == k) {
+            // Reverse the current group
+            curr = reverseKGroup(curr, k);
+            
+            // Reverse the k nodes in the current group
+            while (count > 0) {
+                ListNode* temp = head->next;
+                head->next = curr;
+                curr = head;
+                head = temp;
+                count--;
+            }
+            
+            head = curr; // Update the new head
+        }
+        
+        return head;
+    }
+};
+
