@@ -9,12 +9,11 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
-//FUNCTION OVERLOADING EXAMPLE
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
-        return isValidBST(root, LONG_MIN, LONG_MAX);
+        return isValidBST(root, LONG_MIN, LONG_MAX); //user will do isValidBST(root) , we take that add
+        //the min and max then send it to actual func ie the same func overloaded with diff parameter
     }
     
     bool isValidBST(TreeNode* root, long minVal, long maxVal) {
