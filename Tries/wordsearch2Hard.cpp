@@ -17,7 +17,7 @@ public:
             node = node->children[idx];  // Move to the child node.
         }
         node->eow = true;
-        node->wordVal = word;
+        node->wordVal = word; //if eow true , what word
     }
 };
 
