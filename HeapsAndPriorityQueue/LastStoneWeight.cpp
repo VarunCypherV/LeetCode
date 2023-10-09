@@ -2,16 +2,14 @@
 
 class Solution {
 public:
-    int lastStoneWeight(std::vector<int>& stones) {
+    int lastStoneWeight( vector<int>& stones) {
         vector<int> maxHeap;
         
-        // Convert stones into a max-heap (represented as a max-heap array)
         for (int stone : stones) {
             maxHeap.push_back(stone);
             heapifyUp(maxHeap);
         }
         
-        // Perform stone smashing until there's only one stone left
         while (maxHeap.size() >= 2) {
             int firstStone = extractMax(maxHeap);
             int secondStone = extractMax(maxHeap);
@@ -29,7 +27,7 @@ public:
     }
 
     
-    int extractMax(std::vector<int>& maxHeap) {
+    int extractMax( vector<int>& maxHeap) {
         int maxElement = maxHeap[0];
         maxHeap[0] = maxHeap.back();
         maxHeap.pop_back();
@@ -38,12 +36,12 @@ public:
     }
 
 
-    void heapifyUp(std::vector<int>& maxHeap) {
+    void heapifyUp(vector<int>& maxHeap) {
         int index = maxHeap.size() - 1;
         while (index > 0) {
             int parentIndex = (index - 1) / 2;
             if (maxHeap[index] > maxHeap[parentIndex]) {
-                std::swap(maxHeap[index], maxHeap[parentIndex]);
+                 swap(maxHeap[index], maxHeap[parentIndex]);
                 index = parentIndex;
             } else {
                 break;
@@ -51,7 +49,7 @@ public:
         }
     }
 
-    void heapifyDown(std::vector<int>& maxHeap) {
+    void heapifyDown(vector<int>& maxHeap) {
         int index = 0;
         int size = maxHeap.size();
         while (true) {
