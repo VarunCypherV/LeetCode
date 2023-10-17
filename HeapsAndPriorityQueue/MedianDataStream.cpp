@@ -29,6 +29,64 @@ public:
 };
 
 
+#RED BLACK TREE
+
+class MedianFinder {
+public:
+    struct TreeNode {
+        int val;
+        int count;
+        TreeNode* left;
+        TreeNode* right;
+
+        TreeNode(int x) : val(x), count(1), left(nullptr), right(nullptr) {}
+    };
+
+    TreeNode* root = nullptr;
+    int totalElements = 0;
+
+    void insert(TreeNode*& node, int val) {
+        if (!node) {
+            node = new TreeNode(val);
+        } else {
+            node->count++;
+            if (val < node->val) {
+                insert(node->left, val);
+            } else {
+                insert(node->right, val);
+            }
+        }
+    }
+
+    void addNum(int num) {
+        insert(root, num);
+        totalElements++;
+    }
+
+    double findKth(TreeNode* node, int k) {
+        if (!node) {
+            return 0.0;
+        }
+
+        int leftCount = node->left ? node->left->count : 0;
+
+        if (k == leftCount + 1) {
+            return static_cast<double>(node->val);
+        } else if (k <= leftCount) {
+            return findKth(node->left, k);
+        } else {
+            return findKth(node->right, k - leftCount - 1);
+        }
+    }
+
+    double findMedian() {
+        if (totalElements % 2 == 1) {
+            return findKth(root, (totalElements + 1) / 2);
+        } else {
+            return (findKth(root, totalElements / 2) + findKth(root, totalElements / 2 + 1)) / 2.0;
+        }
+    }
+};
 
 
 #BASIC ENTER SORT
